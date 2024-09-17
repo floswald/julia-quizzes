@@ -1,0 +1,14 @@
+---
+title: "`julia` Quizzes for CompEcon"
+author: "[Florian Oswald](https://floswald.github.io)"
+subtitle: "Computational Econ at SciencesPo Paris, Ecole Doctorale 2024"
+---
+
+This is a website to host julia quizzes for our [course](https://floswald.github.io/NumericalMethods/).
+
+
+
+
+| Quiz  | Topic |
+| ----------- | ----- |
+| [1](quiz1.qmd) | [Basics/Arrays](quiz1.qmd) |

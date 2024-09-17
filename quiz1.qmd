@@ -1,0 +1,229 @@
+---
+title: "Julia Quiz 1"
+engine: julia
+
+---
+
+### Q0
+
+Load the `LinearAlgebra` and the `Statistics` libraries. Those are part of base julia and do *not* need to be installed separately. (☆☆☆)
+
+<details>
+<summary>Show Solution</summary>
+
+```{julia}
+using LinearAlgebra
+using Statistics
+```
+</details>
+
+### Q1
+
+Display the version info of your julia installation. (☆☆☆)
+
+<details>
+<summary>Show Solution</summary>
+
+```{julia}
+versioninfo()
+```
+</details>
+
+### Q2
+
+Create a non initialized vector of size 10 of `Float64`. (★☆☆)
+
+<details>
+<summary>Show Solution</summary>
+
+```{julia}
+vA = Vector{Float64}(undef, 10)
+```
+</details>
+
+### Q3
+
+Create a vector of zeros of size 10 but the fifth value which is 1. (★☆☆)
+
+<details>
+<summary>Show Solution</summary>
+
+```{julia}
+vA = zeros(10);
+vA[5] = 1.0;
+vA
+```
+</details>
+
+
+## Q4
+
+Create the vector `[1,2,3]`. Then reverse it (first element comes last, second element second to last etc)  (★☆☆)
+
+<details>
+<summary>Show Solution</summary>
+
+```{julia}
+v = [1,2,3];
+reverse(v)
+```
+
+or in-place
+
+```{julia}
+v2 = [1,2,3];
+reverse!(v2)
+```
+</details>
+
+
+## Q5
+
+Create a 3x3 matrix with values ranging from 0 to 8. (★☆☆)
+
+
+<details>
+<summary>Show Solution</summary>
+
+```{julia}
+m = reshape(0:8,3,3)
+```
+
+or 
+
+```{julia}
+m = zeros(3,3)
+m[:] = 0:8
+```
+
+
+</details>
+
+
+## Q6
+
+Find indices of non zero elements from `[1, 2, 0, 0, 4, 0]`. (★☆☆)
+
+<details>
+<summary>Show Solution</summary>
+
+```{julia}
+findall(!iszero, [1, 2, 0, 0, 4, 0])
+```
+
+or
+
+```{julia}
+findall( [1, 2, 0, 0, 4, 0] .> 0 )
+```
+
+
+
+</details>
+
+
+## Q7
+
+Create a 3x3 identity matrix. (★☆☆)
+
+<details>
+<summary>Show Solution</summary>
+For this to work, we needed the `using LinearAlgebra` call from above.
+
+```{julia}
+I(3)
+```
+</details>
+
+## Q8
+
+Create a diagonal matrix which has zeros everywhere except the main diagonal, where it should have the values `[4,3,2,1]`. Look for `?diagm`
+
+<details>
+<summary>Show Solution</summary>
+
+```{julia}
+diagm([4,3,2,1])
+```
+</details>
+
+## Q9
+
+Create a `2x2x2` array with random values. (★☆☆)
+
+<details>
+<summary>Show Solution</summary>
+
+```{julia}
+rand(2,2,2)
+```
+
+</details>
+
+
+## Q10
+
+Create a `5x5` array with random values and find the minimum and maximum values. (★☆☆)
+
+<details>
+<summary>Show Solution</summary>
+
+```{julia}
+m = rand(5,5)
+vs = (minimum(m), maximum(m))
+(min = vs[1], max = vs[2])
+```
+
+or 
+
+```{julia}
+extrema(m)
+```
+
+
+
+</details>
+
+
+## Q11
+
+Create a *normal* random vector of size 30000 and find the mean value. What value do you expect to see? Test whether the value you obtain is *approximately equal* to what you expected to see. (★☆☆)
+
+<details>
+<summary>Show Solution</summary>
+
+```{julia}
+mv = mean(randn(30000))
+isapprox(mv,0,atol = 1e-3)
+```
+
+</details>
+
+
+
+## Q12
+
+Create a 2d array of dimension 4x5 with values `1` along the border and `0` inside. (★★☆)
+
+<details>
+<summary>Show Solution</summary>
+
+```{julia}
+m = ones(Int,4,5)
+m[2:(end-1), 2:(end-1)] .= 0
+m
+```
+
+or with a cool comprehension:
+
+```{julia}
+nrows = 4
+ncols = 5
+m = Int[i ∈ (1,nrows) || j ∈ (1, ncols) for i in 1:nrows, j in 1:ncols ]
+m
+```
+
+</details>
+
+
+
