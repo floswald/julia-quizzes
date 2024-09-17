@@ -1,0 +1,79 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "julia Quizzes for CompEcon",
+    "section": "",
+    "text": "This is a website to host julia quizzes for our course.\n\n\n\nQuiz\nTopic\n\n\n\n\n1\nBasics/Arrays"
+  },
+  {
+    "objectID": "quiz1.html",
+    "href": "quiz1.html",
+    "title": "Julia Quiz 1",
+    "section": "",
+    "text": "Load the LinearAlgebra and the Statistics libraries. Those are part of base julia and do not need to be installed separately. (☆☆☆)\n\n\nShow Solution\n\n\nusing LinearAlgebra\nusing Statistics"
+  },
+  {
+    "objectID": "quiz1.html#q4",
+    "href": "quiz1.html#q4",
+    "title": "Julia Quiz 1",
+    "section": "Q4",
+    "text": "Q4\nCreate the vector [1,2,3]. Then reverse it (first element comes last, second element second to last etc) (★☆☆)\n\n\nShow Solution\n\n\nv = [1,2,3];\nreverse(v)\n\n3-element Vector{Int64}:\n 3\n 2\n 1\n\n\nor in-place\n\nv2 = [1,2,3];\nreverse!(v2)\n\n3-element Vector{Int64}:\n 3\n 2\n 1"
+  },
+  {
+    "objectID": "quiz1.html#q5",
+    "href": "quiz1.html#q5",
+    "title": "Julia Quiz 1",
+    "section": "Q5",
+    "text": "Q5\nCreate a 3x3 matrix with values ranging from 0 to 8. (★☆☆)\n\n\nShow Solution\n\n\nm = reshape(0:8,3,3)\n\n3×3 reshape(::UnitRange{Int64}, 3, 3) with eltype Int64:\n 0  3  6\n 1  4  7\n 2  5  8\n\n\nor\n\nm = zeros(3,3)\nm[:] = 0:8\n\n0:8"
+  },
+  {
+    "objectID": "quiz1.html#q6",
+    "href": "quiz1.html#q6",
+    "title": "Julia Quiz 1",
+    "section": "Q6",
+    "text": "Q6\nFind indices of non zero elements from [1, 2, 0, 0, 4, 0]. (★☆☆)\n\n\nShow Solution\n\n\nfindall(!iszero, [1, 2, 0, 0, 4, 0])\n\n3-element Vector{Int64}:\n 1\n 2\n 5\n\n\nor\n\nfindall( [1, 2, 0, 0, 4, 0] .&gt; 0 )\n\n3-element Vector{Int64}:\n 1\n 2\n 5"
+  },
+  {
+    "objectID": "quiz1.html#q7",
+    "href": "quiz1.html#q7",
+    "title": "Julia Quiz 1",
+    "section": "Q7",
+    "text": "Q7\nCreate a 3x3 identity matrix. (★☆☆)\n\n\nShow Solution\n\nFor this to work, we needed the using LinearAlgebra call from above.\n\nI(3)\n\n3×3 Diagonal{Bool, Vector{Bool}}:\n 1  ⋅  ⋅\n ⋅  1  ⋅\n ⋅  ⋅  1"
+  },
+  {
+    "objectID": "quiz1.html#q8",
+    "href": "quiz1.html#q8",
+    "title": "Julia Quiz 1",
+    "section": "Q8",
+    "text": "Q8\nCreate a diagonal matrix which has zeros everywhere except the main diagonal, where it should have the values [4,3,2,1]. Look for ?diagm\n\n\nShow Solution\n\n\ndiagm([4,3,2,1])\n\n4×4 Matrix{Int64}:\n 4  0  0  0\n 0  3  0  0\n 0  0  2  0\n 0  0  0  1"
+  },
+  {
+    "objectID": "quiz1.html#q9",
+    "href": "quiz1.html#q9",
+    "title": "Julia Quiz 1",
+    "section": "Q9",
+    "text": "Q9\nCreate a 2x2x2 array with random values. (★☆☆)\n\n\nShow Solution\n\n\nrand(2,2,2)\n\n2×2×2 Array{Float64, 3}:\n[:, :, 1] =\n 0.875988  0.665103\n 0.502318  0.186084\n\n[:, :, 2] =\n 0.138049  0.988807\n 0.619374  0.874119"
+  },
+  {
+    "objectID": "quiz1.html#q10",
+    "href": "quiz1.html#q10",
+    "title": "Julia Quiz 1",
+    "section": "Q10",
+    "text": "Q10\nCreate a 5x5 array with random values and find the minimum and maximum values. (★☆☆)\n\n\nShow Solution\n\n\nm = rand(5,5)\nvs = (minimum(m), maximum(m))\n(min = vs[1], max = vs[2])\n\n(min = 0.03669640272987518, max = 0.901509423657478)\n\n\nor\n\nextrema(m)\n\n(0.03669640272987518, 0.901509423657478)"
+  },
+  {
+    "objectID": "quiz1.html#q11",
+    "href": "quiz1.html#q11",
+    "title": "Julia Quiz 1",
+    "section": "Q11",
+    "text": "Q11\nCreate a normal random vector of size 30000 and find the mean value. What value do you expect to see? Test whether the value you obtain is approximately equal to what you expected to see. (★☆☆)\n\n\nShow Solution\n\n\nmv = mean(randn(30000))\nisapprox(mv,0,atol = 1e-3)\n\nfalse"
+  },
+  {
+    "objectID": "quiz1.html#q12",
+    "href": "quiz1.html#q12",
+    "title": "Julia Quiz 1",
+    "section": "Q12",
+    "text": "Q12\nCreate a 2d array of dimension 4x5 with values 1 along the border and 0 inside. (★★☆)\n\n\nShow Solution\n\n\nm = ones(Int,4,5)\nm[2:(end-1), 2:(end-1)] .= 0\nm\n\n4×5 Matrix{Int64}:\n 1  1  1  1  1\n 1  0  0  0  1\n 1  0  0  0  1\n 1  1  1  1  1\n\n\nor with a cool comprehension:\n\nnrows = 4\nncols = 5\nm = Int[i ∈ (1,nrows) || j ∈ (1, ncols) for i in 1:nrows, j in 1:ncols ]\nm\n\n4×5 Matrix{Int64}:\n 1  1  1  1  1\n 1  0  0  0  1\n 1  0  0  0  1\n 1  1  1  1  1"
+  }
+]
